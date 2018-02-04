@@ -11,25 +11,20 @@ import java.util.zip.GZIPOutputStream;
 public class Gzip {
 
     public static byte[] compress(final String str) {
-        if (!Strings.hasText(str)) {
-            throw new IllegalArgumentException("Cannot zip null or empty string");
-        }
-
+        Assert.notEmptyString(str, "Cannot zip null or empty string");
         try (final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
             try (final GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream)) {
                 gzipOutputStream.write(str.getBytes(StandardCharsets.UTF_8));
             }
             return byteArrayOutputStream.toByteArray();
         }
-        catch(final IOException e) {
-            throw new RuntimeException("Failed to zip content", e);
+        catch(final IOException ex) {
+            throw new RuntimeException("Failed to zip string", ex);
         }
     }
 
     public static String decompress(final byte[] compressed) {
-        if ((compressed == null) || (compressed.length == 0)) {
-            throw new IllegalArgumentException("Cannot unzip null or empty bytes");
-        }
+        Assert.notNull(compressed, "Cannot unzip null or empty byte[]");
         if (!isZipped(compressed)) {
             return new String(compressed);
         }
@@ -47,11 +42,13 @@ public class Gzip {
                     }
                 }
             }
-        } catch(IOException e) {
+        }
+        catch(IOException e) {
             throw new RuntimeException("Failed  to unzip content", e);
         }
     }
-    public static boolean isZipped(final byte[] compressed ) {
+
+    private static boolean isZipped(final byte[] compressed ) {
         return (compressed[0] == (byte) (GZIPInputStream.GZIP_MAGIC)) && (compressed[1] == (byte) (GZIPInputStream.GZIP_MAGIC >> 8));
     }
 
