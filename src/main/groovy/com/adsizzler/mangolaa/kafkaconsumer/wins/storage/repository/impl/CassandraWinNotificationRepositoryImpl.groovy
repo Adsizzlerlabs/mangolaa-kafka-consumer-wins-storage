@@ -45,6 +45,7 @@ class CassandraWinNotificationRepositoryImpl implements WinNotificationRepositor
     @PreDestroy
     void cleanup() {
         log.info 'Attempting to shutdown executor for class {}', this.class.name
+        executor.shutdown()
     }
 
     @Override
