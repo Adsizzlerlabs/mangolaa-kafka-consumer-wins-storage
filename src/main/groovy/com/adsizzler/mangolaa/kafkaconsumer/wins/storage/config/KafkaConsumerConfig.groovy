@@ -22,6 +22,10 @@ class KafkaConsumerConfig {
     @Autowired
     EnvironmentUtil env
 
+    /**
+     * Kafka Consumer config
+     * @return instance of KafkaConsumer where key is of type String, and the value of type byte[]
+     */
     @Bean("kafkaConsumer")
     KafkaConsumer<String,byte[]> kafkaConsumer(){
         Properties config = new Properties()
@@ -32,10 +36,10 @@ class KafkaConsumerConfig {
         else{
 
         }
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,host)
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, host)
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class)
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class)
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "mangolaa-wins-storage-group" + UUID.randomUUID())
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "mangolaa-wins-storage-group")
         config.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true")
         return KafkaConsumer.create(vertx, config)
     }

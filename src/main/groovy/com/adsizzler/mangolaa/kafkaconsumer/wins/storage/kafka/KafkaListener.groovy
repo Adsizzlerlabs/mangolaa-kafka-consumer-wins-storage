@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 /**
+ * Class that reads stream of win events from Kafka
  * Created by ankushsharma on 02/02/18.
  */
 @Component
@@ -30,6 +31,9 @@ class KafkaListener {
         this.winNotificationService = winNotificationService
     }
 
+    /**
+     * Register the handler. This is a one time operation
+     */
     @PostConstruct
     void saveWins(){
 
@@ -45,7 +49,6 @@ class KafkaListener {
 
             log.debug 'Win {}', winNotification
             winNotificationService.save(winNotification)
-
         }
         .exceptionHandler{ ex ->
             log.error '', ex

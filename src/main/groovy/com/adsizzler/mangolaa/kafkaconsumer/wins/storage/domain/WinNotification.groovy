@@ -8,6 +8,7 @@ import java.time.ZonedDateTime
 
 
 /**
+ * The WinNotification object that will be saved to permanent storage
  * Created by ankushsharma on 02/02/18.
  */
 @ToString(includePackage = false)
@@ -22,7 +23,7 @@ class WinNotification {
      final Integer advId
      final Integer clientId
      final String bidReqId
-     final String bidRespId
+     final UUID bidRespId
      final String impId
      final String adId
      final Float clearingPrice
@@ -53,5 +54,6 @@ class WinNotification {
         this.mbr = request.mbr
         this.lossCode = request.lossCode
     }
+
 
 }

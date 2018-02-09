@@ -17,11 +17,10 @@ class VertxConfig {
     Vertx vertx(){
         Vertx.vertx(
                 new VertxOptions()
-                    //This is not at all an optimal setting, but then we are loading our db-ip file on startup on the Event loop thread
                     .setBlockedThreadCheckInterval(1)
         )
         .exceptionHandler{ ex ->
-            log.error 'Unhandeled Exception {}', ex
+            log.error 'Unhandled Exception {}', ex
         }
     }
 

@@ -4,7 +4,6 @@ import com.adsizzler.mangolaa.kafkaconsumer.wins.storage.jackson.UUIDDeserialize
 import com.adsizzler.mangolaa.kafkaconsumer.wins.storage.jackson.ZonedDateTimeDeserializer
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
 import java.time.ZonedDateTime
@@ -45,7 +44,8 @@ class WinNotificationRequest {
     final String bidReqId
 
     @JsonProperty(value = 'bidRespId')
-    final String bidRespId
+    @JsonDeserialize(using = UUIDDeserializer)
+    final UUID bidRespId
 
     @JsonProperty(value = 'impId')
     final String impId

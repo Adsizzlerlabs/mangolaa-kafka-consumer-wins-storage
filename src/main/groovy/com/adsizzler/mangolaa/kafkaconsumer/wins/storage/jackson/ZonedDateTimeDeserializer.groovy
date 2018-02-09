@@ -9,6 +9,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
+ * JacksonDeserializer that deserializes a String to a ZonedDateTime
  * Created by ankushsharma on 02/02/18.
  */
 class ZonedDateTimeDeserializer extends JsonDeserializer<ZonedDateTime> {

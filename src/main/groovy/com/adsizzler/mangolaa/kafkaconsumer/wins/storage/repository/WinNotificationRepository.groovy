@@ -15,4 +15,11 @@ interface WinNotificationRepository {
      */
     Future<Void> save(WinNotification win)
 
+    /**
+     * Fetch a WinNotification by its uuid, wrapped in a Future
+     * @param uuid The unique uuid of a WinNotification event
+     * @return A Future that contains the WinNotification event, or an error otherwise
+     */
+    Future<WinNotification> findOneByUuid(UUID uuid)
+
 }

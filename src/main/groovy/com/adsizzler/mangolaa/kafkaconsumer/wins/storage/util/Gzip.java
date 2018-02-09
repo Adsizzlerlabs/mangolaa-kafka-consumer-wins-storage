@@ -10,6 +10,11 @@ import java.util.zip.GZIPOutputStream;
  */
 public class Gzip {
 
+    /**
+     * Compress a String using gzip compression
+     * @param str String to compress using gzip compression
+     * @return gzip content as byte[]
+     */
     public static byte[] compress(final String str) {
         Assert.notEmptyString(str, "Cannot zip null or empty string");
         try (final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
@@ -23,6 +28,11 @@ public class Gzip {
         }
     }
 
+    /**
+     *
+     * @param compressed the byte[] to decompress using gzip algorithm
+     * @return
+     */
     public static String decompress(final byte[] compressed) {
         Assert.notNull(compressed, "Cannot unzip null or empty byte[]");
         if (!isZipped(compressed)) {

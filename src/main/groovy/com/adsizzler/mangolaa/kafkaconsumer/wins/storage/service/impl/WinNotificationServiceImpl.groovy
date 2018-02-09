@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
  */
 @Service
 @Slf4j
-class WinNotificationServiceImpl implements WinNotificationService{
+class WinNotificationServiceImpl implements WinNotificationService {
 
     private final WinNotificationRepository repository
 
@@ -26,4 +26,5 @@ class WinNotificationServiceImpl implements WinNotificationService{
         Assert.notNull(win, 'win cannot be null')
         repository.save(win)
     }
+
 }

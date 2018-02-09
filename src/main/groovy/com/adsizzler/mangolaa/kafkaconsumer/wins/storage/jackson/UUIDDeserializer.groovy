@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonDeserializer
 
 /**
+ * JacksonDeserializer to deserialize a String to UUID
  * Created by ankushsharma on 04/02/18.
  */
 class UUIDDeserializer extends JsonDeserializer<UUID> {
