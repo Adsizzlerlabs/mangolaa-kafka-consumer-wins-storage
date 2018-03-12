@@ -30,7 +30,7 @@ repositories {
 version = VERSION
 
 jar{
-	baseName =  "wins"
+	baseName =  "kc-impressions-storage"
 	version =  VERSION
 }
 

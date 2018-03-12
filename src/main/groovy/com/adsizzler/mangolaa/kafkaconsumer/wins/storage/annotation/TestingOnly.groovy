@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy
 import java.lang.annotation.Target
 
 /**
- * Annotation to use on methods that are only meant for testing, and nothing else.
+ * Annotation to use on methods that are only meant for testing or development profile only
  * Created by ankushsharma on 05/02/18.
  */
 @Retention(RetentionPolicy.RUNTIME)

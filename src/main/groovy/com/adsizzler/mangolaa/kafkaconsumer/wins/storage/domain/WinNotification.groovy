@@ -32,7 +32,6 @@ class WinNotification {
      final Double mbr
      final Integer lossCode
 
-
     WinNotification(WinNotificationRequest request){
         Assert.notNull(request, 'request cannot be null')
 
@@ -54,6 +53,5 @@ class WinNotification {
         this.mbr = request.mbr
         this.lossCode = request.lossCode
     }
-
 
 }

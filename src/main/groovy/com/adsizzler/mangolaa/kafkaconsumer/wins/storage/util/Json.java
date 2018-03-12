@@ -32,32 +32,5 @@ public class Json {
                 .readValue(json, clazz);
     }
 
-    /**
-     * Serialize a POJO/Map to JSON String
-     * @param object The Object to convert to a JSON string
-     * @return The JSON representation of @param object
-     * @throws Exception
-     */
-    public static String encode(final Object object) throws Exception {
-        Assert.notNull(object, "object cannot be null");
-        return objectMapper
-                .writer()
-                .writeValueAsString(object);
-    }
-
-    /**
-     * Serialize a POJO/Map to a pretty JSON String
-     * @param object The Object to convert to a pretty JSON string
-     * @return The JSON representation of @param object
-     * @throws Exception
-     */
-    public static String encodePretty(final Object object) throws Exception {
-        Assert.notNull(object, "object cannot be null");
-        return objectMapper
-                .writer()
-                .withDefaultPrettyPrinter()
-                .writeValueAsString(object);
-    }
-
 
 }

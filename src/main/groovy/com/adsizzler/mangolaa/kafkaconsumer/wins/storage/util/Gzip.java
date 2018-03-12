@@ -11,24 +11,6 @@ import java.util.zip.GZIPOutputStream;
 public class Gzip {
 
     /**
-     * Compress a String using gzip compression
-     * @param str String to compress using gzip compression
-     * @return gzip content as byte[]
-     */
-    public static byte[] compress(final String str) {
-        Assert.notEmptyString(str, "Cannot zip null or empty string");
-        try (final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
-            try (final GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream)) {
-                gzipOutputStream.write(str.getBytes(StandardCharsets.UTF_8));
-            }
-            return byteArrayOutputStream.toByteArray();
-        }
-        catch(final IOException ex) {
-            throw new RuntimeException("Failed to zip string", ex);
-        }
-    }
-
-    /**
      *
      * @param compressed the byte[] to decompress using gzip algorithm
      * @return

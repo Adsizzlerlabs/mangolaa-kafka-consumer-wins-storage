@@ -33,8 +33,8 @@ class CassandraWinNotificationRepositoryImpl implements WinNotificationRepositor
 
     CassandraWinNotificationRepositoryImpl(
             CqlTemplate cqlTemplate,
-            @Value("\$wins.cassandra.wins.keyspace") String keyspace,
-            @Value("\$wins.cassandra.wins.table") String table
+            @Value("\${wins.cassandra.wins.keyspace}") String keyspace,
+            @Value("\${wins.cassandra.wins.table}") String table
     )
     {
         this.cqlTemplate = cqlTemplate
@@ -52,10 +52,13 @@ class CassandraWinNotificationRepositoryImpl implements WinNotificationRepositor
     Future<Void> save(WinNotification win) {
         Assert.notNull(win, 'win cannot be null')
         def future = Future.future()
+
+        def cassandraTimestamp = Date.from(win.timestamp.toInstant())
+
         def insertStatement = QueryBuilder
                                 .insertInto(keyspace, table)
                                     .value('uuid', win.uuid)
-                                    .value('timestamp', win.timestamp)
+                                    .value('timestamp', cassandraTimestamp)
                                     .value('markup', win.markup)
                                     .value('cr_id', win.creativeId)
                                     .value('camp_id', win.campaignId)
